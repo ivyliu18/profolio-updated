@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ivy Liu 劉詩妤 — 營運系統 × 人才發展 | Operations Systems × People Development</title>
+<meta name="description" content="Ivy Liu（劉詩妤）:從零建立營運系統的商務工作者,也是把人帶起來的教學者。Builds operating systems from zero; builds people through training and coaching. London / Taipei.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Schibsted+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7; --ink:#191712; --muted:#6F6A60; --line:#E7E3D8;
+  --blue:#1D4FD7; --orange:#C2410C;
+  --tintA:#EAF0FE; --tintB:#FBEDE4;
+  --serif-zh:'Noto Serif TC','Fraunces',serif;
+  --sans-zh:'Noto Sans TC','Schibsted Grotesk',sans-serif;
+  --serif-en:'Fraunces','Noto Serif TC',serif;
+  --sans-en:'Schibsted Grotesk','Noto Sans TC',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation:none!important;transition:none!important;}}
+body{background:var(--paper);color:var(--ink);font-size:15px;}
+[data-lang="zh"] body,.lang-zh{font-family:var(--sans-zh);line-height:1.85;}
+.lang-en{font-family:var(--sans-en);line-height:1.75;}
+[data-lang="zh"] .lang-en{display:none!important;}
+[data-lang="en"] .lang-zh{display:none!important;}
+.lang-zh h1,.lang-zh h2,.lang-zh h3,.lang-zh .door h2{font-family:var(--serif-zh);}
+.lang-en h1,.lang-en h2,.lang-en h3,.lang-en .door h2{font-family:var(--serif-en);}
+a{color:inherit;}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+::selection{background:var(--tintA);}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(251,250,247,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav-brand{font-family:'Fraunces',serif;font-size:17px;font-weight:600;text-decoration:none;letter-spacing:.01em;}
+.nav-links{display:flex;gap:26px;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:var(--ink);}
+.lang-tabs{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:#fff;}
+.lang-tab{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:7px 16px;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:background .15s,color .15s;}
+.lang-tab[aria-selected="true"]{background:var(--ink);color:var(--paper);}
+
+/* ── Hero ── */
+.hero{padding:150px 48px 0;max-width:1160px;margin:0 auto;}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;}
+.hero h1{font-size:clamp(33px,5vw,58px);font-weight:700;line-height:1.32;max-width:20em;}
+.lang-en .hero h1{font-weight:600;line-height:1.14;letter-spacing:-.01em;max-width:17em;}
+.hero h1 .a{color:var(--blue);}
+.hero h1 .b{color:var(--orange);}
+.hero-sub{margin-top:26px;max-width:620px;font-size:16px;color:var(--muted);line-height:2;}
+
+/* ── Doors ── */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1160px;margin:56px auto 0;padding:0 48px;}
+.door{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:34px 32px 30px;position:relative;overflow:hidden;transition:transform .18s ease,border-color .18s ease;background:#fff;}
+.door::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;}
+.door.a::before{background:var(--blue);}
+.door.b::before{background:var(--orange);}
+.door:hover{transform:translateY(-3px);}
+.door.a:hover{border-color:var(--blue);}
+.door.b:hover{border-color:var(--orange);}
+.door-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
+.door.a .door-tag{color:var(--blue);}
+.door.b .door-tag{color:var(--orange);}
+.door h2{font-size:24px;font-weight:700;margin-bottom:10px;line-height:1.4;}
+.door p{font-size:13.5px;color:var(--muted);line-height:1.9;}
+.door-go{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;}
+.door.a .door-go{color:var(--blue);}
+.door.b .door-go{color:var(--orange);}
+
+/* ── Sections ── */
+section{max-width:1160px;margin:0 auto;padding:110px 48px 0;}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px;flex-wrap:wrap;}
+.sec-eye{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;}
+.sec-eye.a{color:var(--blue);}
+.sec-eye.b{color:var(--orange);}
+.sec-eye.n{color:var(--muted);}
+h2.sec-title{font-size:clamp(26px,3vw,38px);font-weight:700;line-height:1.35;}
+.lang-en h2.sec-title{font-weight:600;line-height:1.2;letter-spacing:-.01em;}
+.sec-desc{max-width:640px;color:var(--muted);margin-bottom:40px;}
+
+/* ── Work cards ── */
+.work{border:1px solid var(--line);border-radius:14px;background:#fff;padding:30px 30px 30px 34px;position:relative;margin-bottom:14px;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;}
+.work::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;border-radius:14px 0 0 14px;}
+.track-a .work::before{background:var(--blue);}
+.track-b .work::before{background:var(--orange);}
+.work:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(25,23,18,.06);}
+.track-a .work:hover{border-color:var(--blue);}
+.track-b .work:hover{border-color:var(--orange);}
+.work-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.work h3{font-size:21px;font-weight:700;line-height:1.5;margin-bottom:10px;}
+.lang-en .work h3{line-height:1.3;font-weight:600;letter-spacing:-.005em;}
+.work-summary{font-size:14px;color:var(--muted);line-height:2;max-width:760px;}
+.work-open{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:8px;}
+.track-a .work-open{color:var(--blue);}
+.track-b .work-open{color:var(--orange);}
+.work.flagship{padding:36px 32px 36px 36px;}
+.track-a .work.flagship{background:var(--tintA);}
+.track-b .work.flagship{background:var(--tintB);}
+.work-detail{display:none;}
+
+/* ── Dialog / panel ── */
+dialog{border:none;border-radius:16px;padding:0;max-width:760px;width:calc(100% - 40px);max-height:85vh;background:var(--paper);color:var(--ink);}
+dialog::backdrop{background:rgba(25,23,18,.45);backdrop-filter:blur(2px);}
+.dlg-inner{padding:44px 44px 40px;overflow-y:auto;max-height:85vh;}
+.dlg-close{position:sticky;top:0;float:right;font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 16px;cursor:pointer;color:var(--muted);}
+.dlg-close:hover{color:var(--ink);border-color:var(--ink);}
+.dlg-inner .work-role{margin-bottom:12px;}
+.dlg-inner h3{font-size:24px;font-weight:700;line-height:1.5;margin-bottom:20px;font-family:var(--serif-zh);}
+html[data-lang="en"] .dlg-inner h3{font-family:var(--serif-en);line-height:1.25;font-weight:600;}
+.dlg-inner p{font-size:14.5px;line-height:2;color:rgba(25,23,18,.8);margin-bottom:16px;}
+.dlg-inner h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:26px 0 12px;}
+.dlg-a h4{color:var(--blue);}
+.dlg-b h4{color:var(--orange);}
+.dlg-inner ul{list-style:none;}
+.dlg-inner li{font-size:13.5px;line-height:1.95;padding:7px 0 7px 20px;position:relative;border-bottom:1px dashed var(--line);}
+.dlg-inner li:last-child{border-bottom:none;}
+.dlg-inner li::before{content:'—';position:absolute;left:0;}
+.dlg-a li::before{color:var(--blue);}
+.dlg-b li::before{color:var(--orange);}
+.dlg-contact{margin-top:24px;padding:18px 22px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13.5px;line-height:2;}
+.dlg-contact a{color:var(--orange);text-decoration:none;font-family:var(--mono);font-size:12.5px;}
+.dlg-contact a:hover{text-decoration:underline;}
+
+/* ── Writing ── */
+.writing-list{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;}
+.writing-row{display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:baseline;padding:24px 28px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .15s;}
+.writing-row:last-child{border-bottom:none;}
+.writing-row:hover{background:var(--paper);}
+.writing-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.writing-title{font-size:16.5px;font-weight:700;line-height:1.6;}
+.lang-en .writing-title{line-height:1.45;font-weight:600;}
+.writing-arrow{font-family:var(--mono);font-size:12px;color:var(--muted);}
+.writing-note{font-size:12.5px;color:var(--muted);margin-top:14px;font-family:var(--mono);letter-spacing:.02em;}
+
+/* ── About ── */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;}
+.about-grid p{margin-bottom:18px;color:rgba(25,23,18,.78);}
+.about-grid strong{font-weight:700;}
+.fact{border-top:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:130px 1fr;gap:16px;font-size:13.5px;}
+.fact:last-child{border-bottom:1px solid var(--line);}
+.fact-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px;}
+
+/* ── Contact ── */
+.contact{padding-bottom:120px;}
+.contact-card{border:1px solid var(--ink);border-radius:16px;padding:52px 48px;background:#fff;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+.contact-card h2{font-size:clamp(24px,3vw,32px);font-weight:700;line-height:1.5;}
+.lang-en .contact-card h2{line-height:1.3;font-weight:600;}
+.contact-right{display:flex;flex-direction:column;gap:16px;}
+.contact-line{font-size:14px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.contact-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:76px;}
+.contact-line a{text-decoration:none;font-family:var(--mono);font-size:13px;color:var(--blue);}
+.contact-line a:hover{text-decoration:underline;}
+.contact-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-decoration:none;padding:12px 22px;border-radius:99px;transition:opacity .15s;}
+.btn.primary{background:var(--ink);color:var(--paper);}
+.btn.primary:hover{opacity:.85;}
+.btn.ghost{border:1px solid var(--ink);color:var(--ink);}
+.btn.ghost:hover{background:var(--tintA);}
+
+footer{border-top:1px solid var(--line);padding:28px 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted);}
+
+@media(max-width:900px){
+  nav{padding:12px 20px;}
+  .nav-links{gap:14px;}
+  .nav-links a{display:none;}
+  .hero{padding:120px 20px 0;}
+  .doors{grid-template-columns:1fr;padding:0 20px;margin-top:40px;}
+  section{padding:80px 20px 0;}
+  .work{padding:24px 20px 24px 26px;}
+  .about-grid{grid-template-columns:1fr;gap:36px;}
+  .writing-row{grid-template-columns:1fr;gap:6px;}
+  .contact-card{grid-template-columns:1fr;padding:36px 24px;gap:28px;}
+  .dlg-inner{padding:32px 22px 28px;}
+  footer{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#top">Ivy Liu</a>
+  <div class="nav-links">
+    <span class="lang-zh" style="display:contents;">
+      <a href="#systems-zh">系統與商務</a><a href="#people-zh">人才與發展</a><a href="#writing-zh">長文寫作</a><a href="#about-zh">關於我</a><a href="#contact-zh">聯絡</a>
+    </span>
+    <span class="lang-en" style="display:contents;">
+      <a href="#systems-en">Systems</a><a href="#people-en">People</a><a href="#writing-en">Writing</a><a href="#about-en">About</a><a href="#contact-en">Contact</a>
+    </span>
+    <div class="lang-tabs" role="tablist" aria-label="Language">
+      <button class="lang-tab" role="tab" aria-selected="true" data-setlang="zh">中文</button>
+      <button class="lang-tab" role="tab" aria-selected="false" data-setlang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ════════════════════════ 中文 ════════════════════════ -->
+<div class="lang-zh">
+
+<div class="hero">
+  <div class="hero-eyebrow">Ivy Liu（劉詩妤）· London / Taipei</div>
+  <h1>把混亂變成<span class="a">可運轉的系統</span>,<br>把人帶到<span class="b">能獨當一面</span>。</h1>
+  <p class="hero-sub">我在英國 Fintech 新創從零建立公司的營運骨架，也長期做培訓、教學與職涯陪跑。兩條線共用同一套能力：拆解混亂、建立框架、然後交得出去——無論交給系統，還是交給人。</p>
+</div>
+
+<div class="doors">
+  <a class="door a" href="#systems-zh">
+    <div class="door-tag">Track 01 · Systems &amp; Business</div>
+    <h2>系統與商務</h2>
+    <p>0→1 營運建置、商務開發、重點客戶提案、聯盟行銷與跨部門專案——在資源最少的環境裡，建立讓公司可預測運轉的系統。</p>
+    <span class="door-go">看這條線的工作 ↓</span>
+  </a>
+  <a class="door b" href="#people-zh">
+    <div class="door-tag">Track 02 · People &amp; Development</div>
+    <h2>人才與發展</h2>
+    <p>職能培訓、B2G 求職服務、英語教學與人才顧問——把「怎麼做」拆解成別人學得會的框架，陪人走完從不會到會的那段路。</p>
+    <span class="door-go">看這條線的工作 ↓</span>
+  </a>
+</div>
+
+<section id="systems-zh" class="track-a">
+  <div class="sec-head"><span class="sec-eye a">Track 01</span><h2 class="sec-title">系統與商務</h2></div>
+  <p class="sec-desc">主場景是一間英國 Fintech 支付新創（四人團隊、創辦人即唯一工程師）。我以 Operations / Strategy Lead 的角色做公司 0→1，同時承擔商務開發與重點客戶經營。點擊卡片看完整案例。</p>
+
+  <div class="work flagship" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">UK Fintech 新創 · Operations / Strategy Lead · 旗艦案例</div>
+    <h3>公司 0→1：從零建立整套營運系統，再把它完整交出去</h3>
+    <p class="work-summary">在沒有任何現成制度的環境，建立跨 Sales、Support、Tech 的資訊流與流程，擔任跨職能整合者。離任時以完整交接系統把角色交出去——系統在我離開後仍能運轉，是這個案例的最終驗證。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">UK Fintech 新創 · Operations / Strategy Lead</div>
+      <h3>公司 0→1：從零建立整套營運系統，再把它完整交出去</h3>
+      <h4>背景</h4>
+      <p>公司在我加入前只做產品開發——沒有營運、沒有行銷、沒有任何系統性文件。我是第一個專職營運與行銷的人，面對的是一個四人團隊：創辦人同時是唯一的全端工程師，他的時間是全公司最稀缺的資源。</p>
+      <h4>我做了什麼</h4>
+      <ul>
+        <li>建立跨 Sales、Support、Tech 的資訊流，讓問題在到達創辦人之前，先被整理成「結論 + 選項 + 風險 + 需要決定什麼」</li>
+        <li>設計 KPI 體系：承諾達成率、延誤提前通知率、重工率、escalation 品質——把「可預測性」量化</li>
+        <li>以 AI 工作流重設計重複性流程（例如商家資料處理），把邊際成本壓到接近零</li>
+        <li>建立 Decision Log、Weekly Update、SOP library 等 async 文件文化：每份文件都回答「這替誰省了什麼時間」</li>
+      </ul>
+      <h4>交接系統</h4>
+      <p>離任時，我為接手者建立了多章節交接文件、專案追蹤總表（含風險與 next action）、30/60/90 天上手計畫，以及權限分級與新人 Day-1 資訊安全守則。交接的驗收標準只有一條：我不在，系統照樣轉。</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">商務開發 · 重點客戶 · 合作生態</div>
+    <h3>重點客戶提案、合作商會議與聯盟整合行銷</h3>
+    <p class="work-summary">對已使用競品的高價值客戶，通用簡報沒有說服力。我獨立完成全英文客製提案，並代表公司出席重點客戶與合作商會議，設計聯盟夥伴的整合行銷營運策略。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">商務開發 · 重點客戶 · 合作生態</div>
+      <h3>重點客戶提案、合作商會議與聯盟整合行銷</h3>
+      <h4>背景</h4>
+      <p>高價值的潛在客戶通常已經在用某個競爭對手的服務，需要一個非常具體的理由才願意切換。我的任務是讓對方在第一次接觸就感覺：「這份提案是為我做的」。</p>
+      <h4>提案的四個構件</h4>
+      <ul>
+        <li>情境開場——用客戶自己的規模、痛點與業務型態開頭，立刻表明這不是複製貼上</li>
+        <li>競品對照——設計成「30 秒看懂差異」的視覺論證，而非文字牆</li>
+        <li>客製定價——依交易量與商業模式設計，具競爭力也守得住利潤</li>
+        <li>下一步——一句話的低摩擦 CTA，拆掉所有後續對話的門檻</li>
+      </ul>
+      <h4>會議與聯盟</h4>
+      <p>同時代表公司出席重點客戶與合作商會議，並為聯盟夥伴設計整合行銷的營運策略——兼顧夥伴分工、資料歸屬與品牌一致性。提案與會議的品質本身，就是「為什麼信任我們」的答案之一。</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Sales Enablement · 知識壓縮</div>
+    <h3>把 12 章上手指南，重設計成 Day-1 可執行的銷售 Playbook</h3>
+    <p class="work-summary">新進業務原本要讀完 12 個章節才能打第一通電話。我把散落的產品、定價與話術知識重新架構成一份精實 Playbook——資訊密度不變，上手時間大幅縮短。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">Sales Enablement · 知識壓縮</div>
+      <h3>把 12 章上手指南，重設計成 Day-1 可執行的銷售 Playbook</h3>
+      <h4>背景</h4>
+      <p>原本的新人教材是 12 個章節的完整指南——知識都在，但新人第一天需要的不是百科全書，是一張能直接上場的地圖。</p>
+      <h4>重新架構</h4>
+      <ul>
+        <li>三步通話流程：開場確認與資格判斷 → 價值鉤子與軟性收尾 → 送出註冊與紀錄結果</li>
+        <li>六種商家類型對應六個切入點：先問「你的生意每天在做什麼」，再對痛點配產品</li>
+        <li>異議應對表：把「異議」重新定義為「對方在要求安心感」</li>
+        <li>「Never Say」紅線清單：合規用語、定價授權邊界，一次講清楚</li>
+        <li>「先升級、不硬推」原則內建於流程——風險判斷不依賴個人經驗</li>
+      </ul>
+      <h4>結果</h4>
+      <p>每通電話以結果代碼收尾，資料可追溯、可覆盤；新人不用背熟一本書，照著地圖走就能維持品質。這是我對「文件」的一貫主張：文件的價值不是存檔，是替人省下判斷的時間。</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">知識管理 · 合規設計</div>
+    <h3>為受監管支付環境設計九層知識管理架構</h3>
+    <p class="work-summary">早期公司最貴的隱性成本，是文件系統長歪之後再也修不回來。我以稽核邏輯為核心設計文件架構，讓任何人在任何時候找得到正確版本的正確文件。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">知識管理 · 合規設計</div>
+      <h3>為受監管支付環境設計九層知識管理架構</h3>
+      <h4>背景</h4>
+      <p>幾乎每家早期公司都一樣：雲端硬碟從空的開始，大家隨手放檔案，幾個月後沒人知道「最新版」在哪裡。在受監管的支付環境，稽核時找不到文件不只是效率問題，是合規風險。</p>
+      <h4>三個關鍵設計</h4>
+      <ul>
+        <li>合規優先，而非便利優先——法務與合規獨立分層，監管文件不與日常檔案混放；稽核進來時直接指向正確資料夾</li>
+        <li>ISO 8601 命名 + 版本控制——所有檔案按「日期_類別_說明_版本」命名，按日期排序即找到最新版；過期版本移入 Archive</li>
+        <li>存取權限按敏感度設計——個資與金融資料預設唯讀，外部分享需審批；責任鏈在任何時候都清楚</li>
+      </ul>
+      <h4>結果</h4>
+      <p>所有新文件都有明確歸屬，沒有人需要問「這要放哪裡」。Company Standards 文件成為所有新人的單一入口——onboarding 不再依賴口耳相傳。我設計時想的不是「現在三個人方便」，而是「20 人規模、監管進場時，這個架構撐不撐得住」。</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">People Ops · 合規 · 0→1</div>
+    <h3>從零建立招聘、薪資與新人入職體系</h3>
+    <p class="work-summary">公司開始招人時，沒有 JD 模板、面試流程、Offer 格式、薪資計算或入職引導。我獨立設計全流程，並確保符合英國勞動法規。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">People Ops · 合規 · 0→1</div>
+      <h3>從零建立招聘、薪資與新人入職體系</h3>
+      <h4>背景</h4>
+      <p>公司進入成長期才發現：沒有任何 HR 基礎建設。所有東西都要從零設計，同時要符合英國勞動法規；加上客戶群的文化組成，招聘還要納入語言與跨文化條件。</p>
+      <h4>建立了什麼</h4>
+      <ul>
+        <li>招聘管線：多語言 JD、結構化面試框架、篩選標準、Offer 與合約模板</li>
+        <li>薪資系統：薪資追蹤、英國稅務與 NI 計算、銀行轉帳流程、薪資單標準</li>
+        <li>入職體系：第一週 Onboarding SOP、系統操作指南、「問題找誰」聯絡架構、前 30 天任務清單</li>
+        <li>合規文件：多司法管轄區 NDA 審閱、外部律所協調、GDPR 資料處理準則</li>
+      </ul>
+      <h4>結果</h4>
+      <p>任何新加入的管理者都能直接接手這套系統繼續運作。設計良好的流程帶來的不只是效率，是可預測性——每個人知道下一步是什麼，創辦人的注意力才能放在真正需要判斷的地方。</p>
+    </div>
+  </div>
+</section>
+
+<section id="people-zh" class="track-b">
+  <div class="sec-head"><span class="sec-eye b">Track 02</span><h2 class="sec-title">人才與發展</h2></div>
+  <p class="sec-desc">另一條長期主線：教學、培訓與職涯服務。核心方法一以貫之——把隱性經驗拆成顯性框架，讓學的人接得住、走得穩。點擊卡片看完整案例。</p>
+
+  <div class="work flagship" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">創辦 · B2G 求職服務 · 進行中</div>
+    <h3>B2G：給新鮮人的求職服務——從敘事找熱情，陪跑到拿到 Offer</h3>
+    <p class="work-summary">求職最難的不是履歷，是「我到底想做什麼」。B2G 從底層敘事出發，透過一對一諮詢找出熱情所在，再搭配英語工作坊與陪跑機制，把方向感轉成實際行動。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">創辦 · B2G 求職服務 · 進行中</div>
+      <h3>B2G：給新鮮人的求職服務——從敘事找熱情，陪跑到拿到 Offer</h3>
+      <h4>為什麼做這件事</h4>
+      <p>大部分求職服務從「怎麼寫履歷」開始，但那是倒數第二步。真正卡住新鮮人的是更底層的問題：我到底想做什麼？B2G 的設計從這裡出發。</p>
+      <h4>三個服務支柱</h4>
+      <ul>
+        <li>敘事諮詢——透過一對一對話，從個人經驗敘事回推動機模式，找出真正的熱情所在；不是套職涯測驗，是讀懂你自己的故事</li>
+        <li>英語工作坊——針對求職場景的實戰英語：面試應答、書信往來、自我介紹，練的是能直接上場的東西</li>
+        <li>陪跑機制——設定節奏與檢核點，陪伴走完整段求職週期；方向感只有變成行動才有意義</li>
+      </ul>
+      <h4>下一步</h4>
+      <p>B2G 正在逐步加入更多成員與夥伴，目標是發展成完整的服務團隊。如果你是正在找方向的新鮮人，或是想加入的夥伴，歡迎直接聯絡。</p>
+      <div class="dlg-contact">
+        Email：<a href="mailto:b2g.career.2026@gmail.com">b2g.career.2026@gmail.com</a><br>
+        Threads：<a href="https://www.threads.com/@b2g.2026">@b2g.2026</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">職能培訓講師 · 台灣職能培訓機構</div>
+    <h3>新進成員發展 × 重點客戶 Pitch 一條龍培訓</h3>
+    <p class="work-summary">為台灣一間職能培訓機構擔任講師，負責新進成員的職能發展，以及重點客戶 pitch 的完整訓練——從分析到提案演練，一條龍帶完。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">職能培訓講師 · 台灣職能培訓機構</div>
+      <h3>新進成員發展 × 重點客戶 Pitch 一條龍培訓</h3>
+      <h4>兩條培訓線</h4>
+      <ul>
+        <li>新進成員發展——以能力地圖設計成長進度，每個階段有明確的驗收標準；新人知道自己在哪裡、下一步練什麼</li>
+        <li>重點客戶 Pitch 訓練——覆蓋「市場與客戶分析 → 論點架構 → 提案演練」完整鏈路，不只教簡報技巧，教的是從資訊到說服的整條思考路徑</li>
+      </ul>
+      <h4>方法</h4>
+      <p>把我在商務前線的實戰方法，轉譯成可以被教、被練、被驗收的課程框架。培訓的關鍵不是講得精彩，是學員練完之後，真的能自己上場。</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">顧問合作 · 英國招聘顧問公司（半導體領域）</div>
+    <h3>半導體人才搜尋：為新創期獵頭顧問公司擔任 Contractor</h3>
+    <p class="work-summary">與一間由資深獵頭創辦的英國招聘顧問公司合作，以 contractor 身分協助半導體領域的人才搜尋——候選人研究、觸達與初步溝通。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">顧問合作 · 英國招聘顧問公司（半導體領域）</div>
+      <h3>半導體人才搜尋：為新創期獵頭顧問公司擔任 Contractor</h3>
+      <h4>合作內容</h4>
+      <ul>
+        <li>半導體專業人才的市場地圖與候選人研究</li>
+        <li>候選人觸達與初步溝通，銜接顧問後續深度面談</li>
+        <li>與創辦人直接協作，適應精品顧問公司的高標準交付節奏</li>
+      </ul>
+      <h4>這條線的價值</h4>
+      <p>人才搜尋讓我同時看見人才市場的供給端與需求端——企業怎麼定義「對的人」、候選人怎麼被看見。這些觀察直接回饋到 B2G 求職服務的設計：我教新鮮人的每一件事，背後都有市場另一端的第一手驗證。</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">教學 · 長期 · 港台學生 · 英國/台灣</div>
+    <h3>英語寫作與檢定教學，以及教外國人中文</h3>
+    <p class="work-summary">長期教授英語寫作與檢定準備，學生橫跨香港與台灣，教學經驗涵蓋英國與台灣兩地；也曾教外國人中文。</p>
+    <span class="work-open">展開完整案例 →</span>
+    <div class="work-detail">
+      <div class="work-role">教學 · 長期 · 港台學生 · 英國/台灣</div>
+      <h3>英語寫作與檢定教學，以及教外國人中文</h3>
+      <h4>教學範圍</h4>
+      <ul>
+        <li>英語寫作與檢定準備——從邏輯結構下手，而非背模板；學生橫跨香港與台灣</li>
+        <li>英國與台灣兩地的實體與線上教學經驗</li>
+        <li>教外國人中文——雙向語言教學，讓我對「學習者到底卡在哪」有第一手理解</li>
+        <li>同時在職涯平台擔任 mentor，分享非本科轉入 Fintech 的路徑</li>
+      </ul>
+      <h4>教學給我的東西</h4>
+      <p>多年教學訓練出我最核心的能力：把複雜的東西拆解成不同背景的人都消化得了的形式。這個能力貫穿我做的每一件事——寫 SOP、做交接、設計培訓，本質上都是教學。</p>
+    </div>
+  </div>
+</section>
+
+<section id="writing-zh">
+  <div class="sec-head"><span class="sec-eye n">Writing</span><h2 class="sec-title">長文寫作</h2></div>
+  <p class="sec-desc">每隔一陣子我會寫一篇長文。這不是內容行銷，是我思考的方式——寫作幫我把模糊的直覺變成清晰的判斷。</p>
+  <div class="writing-list">
+    <a class="writing-row" href="article-docs.html">
+      <span class="writing-cat">營運思維</span>
+      <span class="writing-title">早期新創最常見的文件管理錯誤——為什麼它總在你最忙的時候爆炸</span>
+      <span class="writing-arrow">→</span>
+    </a>
+    <a class="writing-row" href="article-fraud.html">
+      <span class="writing-cat">商業觀察</span>
+      <span class="writing-title">沒有律師，我如何在英國處理一起跨境詐欺案</span>
+      <span class="writing-arrow">→</span>
+    </a>
+    <a class="writing-row" href="article-org.html">
+      <span class="writing-cat">職場結構</span>
+      <span class="writing-title">在大公司感到窒息，未必是性格問題</span>
+      <span class="writing-arrow">→</span>
+    </a>
+  </div>
+  <p class="writing-note">※ 文章以英文撰寫。</p>
+</section>
+
+<section id="about-zh">
+  <div class="sec-head"><span class="sec-eye n">About</span><h2 class="sec-title">關於我</h2></div>
+  <div class="about-grid">
+    <div>
+      <p>我的路徑不是直線：外文系出身，教了多年英語，做過台灣的品牌與 B2B 行銷，再到曼徹斯特念行銷碩士，然後進入倫敦一間 Fintech 支付新創，從零建立公司的營運系統。</p>
+      <p>這些經歷有一個共同點：我總是那個<strong>把混亂整理成別人接得住的東西</strong>的人。在公司裡，那是流程、文件與系統；在教學和培訓裡，那是框架、課程與陪伴。做法一樣，只是交付的對象不同。</p>
+      <p>我對全英語工作環境非常自在，偏好新創與國際化團隊的節奏——快速、透明、以結果對話。目前一邊經營 B2G 求職服務，一邊持續在商務開發與專案管理的路上前進。</p>
+    </div>
+    <div>
+      <div class="fact"><span class="fact-k">Base</span><span>倫敦（英國）· 與台北雙向連結</span></div>
+      <div class="fact"><span class="fact-k">教育</span><span>曼徹斯特大學 行銷碩士（Merit）· 台灣大學 外文系學士</span></div>
+      <div class="fact"><span class="fact-k">語言</span><span>中文（母語）· 英文（全英語工作）· 日文 · 葡語（學習中）</span></div>
+      <div class="fact"><span class="fact-k">領域</span><span>Fintech / 支付 · 職涯發展 · 教育培訓 · 人才市場</span></div>
+      <div class="fact"><span class="fact-k">工具</span><span>AI 工作流設計 · Notion / Google Workspace · Meta &amp; Google Ads</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact-zh" class="contact">
+  <div class="contact-card">
+    <h2>想聊聊？寫信給我，<br>或在 LinkedIn 上找到我。</h2>
+    <div class="contact-right">
+      <div class="contact-line"><span class="contact-k">Email</span><a href="mailto:liushihyu1@gmail.com">liushihyu1@gmail.com</a></div>
+      <div class="contact-line"><span class="contact-k">LinkedIn</span><a href="https://linkedin.com/in/shihyu-liu/">linkedin.com/in/shihyu-liu</a></div>
+      <div class="contact-line"><span class="contact-k">B2G</span><a href="mailto:b2g.career.2026@gmail.com">b2g.career.2026@gmail.com</a>&nbsp；·&nbsp;<a href="https://www.threads.com/@b2g.2026">Threads @b2g.2026</a></div>
+      <div class="contact-btns">
+        <a class="btn primary" href="mailto:liushihyu1@gmail.com">Email 我</a>
+        <a class="btn ghost" href="https://linkedin.com/in/shihyu-liu/">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /lang-zh -->
+
+<!-- ════════════════════════ ENGLISH ════════════════════════ -->
+<div class="lang-en">
+
+<div class="hero">
+  <div class="hero-eyebrow">Ivy Liu (Shih Yu Liu) · London / Taipei</div>
+  <h1>I turn chaos into <span class="a">systems that run</span>,<br>and help people grow until <span class="b">they run things themselves</span>.</h1>
+  <p class="hero-sub">I built the operating backbone of a UK fintech startup from zero — and I've spent years training, teaching, and coaching people through career transitions. Both lines use the same craft: break the mess down, build the framework, and hand it over — to a system, or to a person.</p>
+</div>
+
+<div class="doors">
+  <a class="door a" href="#systems-en">
+    <div class="door-tag">Track 01 · Systems &amp; Business</div>
+    <h2>Systems &amp; Business</h2>
+    <p>0→1 operations, business development, high-value client proposals, alliance marketing and cross-functional projects — building predictable companies in the least-resourced environments.</p>
+    <span class="door-go">See this track ↓</span>
+  </a>
+  <a class="door b" href="#people-en">
+    <div class="door-tag">Track 02 · People &amp; Development</div>
+    <h2>People &amp; Development</h2>
+    <p>Corporate training, the B2G career service, English teaching and talent consulting — decomposing "how it's done" into frameworks people can actually learn, then walking the road with them.</p>
+    <span class="door-go">See this track ↓</span>
+  </a>
+</div>
+
+<section id="systems-en" class="track-a">
+  <div class="sec-head"><span class="sec-eye a">Track 01</span><h2 class="sec-title">Systems &amp; Business</h2></div>
+  <p class="sec-desc">The main stage: a UK fintech payments startup — four people, with the founder as the sole engineer. As Operations / Strategy Lead I ran the company's 0→1 while owning business development and key-account work. Click any card for the full case.</p>
+
+  <div class="work flagship" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">UK Fintech Startup · Operations / Strategy Lead · Flagship</div>
+    <h3>Company 0→1: building the full operating system, then handing it over intact</h3>
+    <p class="work-summary">In an environment with no existing structure, I built the information flow and processes connecting Sales, Support and Tech — acting as the cross-functional integrator. The final proof of the system: it kept running after I left.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">UK Fintech Startup · Operations / Strategy Lead</div>
+      <h3>Company 0→1: building the full operating system, then handing it over intact</h3>
+      <h4>Background</h4>
+      <p>Before I joined, the company had done only product development — no operations, no marketing, no systematic documentation. I was the first dedicated operations and marketing hire, in a four-person team where the founder was also the sole full-stack engineer: his time was the company's scarcest resource.</p>
+      <h4>What I built</h4>
+      <ul>
+        <li>Information flow across Sales, Support and Tech, so problems reached the founder already shaped as "conclusion + options + risks + what needs your decision"</li>
+        <li>A KPI system quantifying predictability: commitment fulfilment, advance delay notification, rework rate, escalation quality</li>
+        <li>AI-workflow redesign of repetitive processes (e.g. merchant data handling), pushing marginal cost towards zero</li>
+        <li>An async documentation culture — decision logs, weekly updates, an SOP library — where every document answers "whose time does this save?"</li>
+      </ul>
+      <h4>The handover system</h4>
+      <p>On departure I built the successor a multi-chapter handover document, a project tracking master sheet with risks and next actions, a 30/60/90-day ramp plan, plus tiered access control and a day-one information security guardrail. The only acceptance criterion: the system runs without me.</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Business Development · Key Accounts · Partner Ecosystem</div>
+    <h3>Bespoke client proposals, partner meetings, and alliance marketing strategy</h3>
+    <p class="work-summary">For high-value prospects already using a competitor, a generic deck doesn't move anyone. I independently produced fully bespoke English proposals, represented the company in key client and partner meetings, and designed alliance marketing strategy.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Business Development · Key Accounts · Partner Ecosystem</div>
+      <h3>Bespoke client proposals, partner meetings, and alliance marketing strategy</h3>
+      <h4>Background</h4>
+      <p>High-value prospects are already with a competitor and need a very specific reason to switch. The job: make them feel, on first contact, that "this proposal was built for me."</p>
+      <h4>Anatomy of each proposal</h4>
+      <ul>
+        <li>Context frame — opens with the client's own scale, pain points and business type; instantly signals it wasn't copy-pasted</li>
+        <li>Competitor comparison — designed as a visual argument legible in 30 seconds, not a wall of text</li>
+        <li>Custom pricing — built for their transaction volume and business model; competitive but margin-safe</li>
+        <li>Next steps — a one-line, low-friction CTA that removes every barrier to a follow-up conversation</li>
+      </ul>
+      <h4>Meetings &amp; alliances</h4>
+      <p>I also represented the company in key client and partner meetings, and designed the integrated marketing operations strategy for alliance partners — balancing partner roles, data ownership and brand consistency. The quality of the proposal and the meeting is itself part of the answer to "why trust us?"</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Sales Enablement · Knowledge Compression</div>
+    <h3>Redesigning a 12-chapter onboarding guide into a day-one sales playbook</h3>
+    <p class="work-summary">New sales reps originally had to read twelve chapters before making their first call. I re-architected the scattered knowledge into a compact playbook — same information density, dramatically shorter ramp-up.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Sales Enablement · Knowledge Compression</div>
+      <h3>Redesigning a 12-chapter onboarding guide into a day-one sales playbook</h3>
+      <h4>Background</h4>
+      <p>The original training material was a thorough 12-chapter guide — the knowledge was all there, but what a new rep needs on day one isn't an encyclopedia. It's a map they can play from.</p>
+      <h4>The re-architecture</h4>
+      <ul>
+        <li>A three-move call flow: open &amp; qualify → value hook &amp; soft close → register &amp; log the outcome</li>
+        <li>Six merchant types mapped to six hooks: ask "what does your business do day to day?" first, then match product to pain point</li>
+        <li>An objection-handling table that reframes objections as requests for reassurance</li>
+        <li>A "Never Say" red-line list: compliance language and pricing-authority boundaries, made explicit once</li>
+        <li>"Escalate, don't proceed" built into the flow — risk judgement no longer depends on individual experience</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Every call closes with an outcome code — traceable, reviewable data. New reps don't memorise a book; they follow a map that holds quality for them. My standing claim about documents: their value isn't archiving, it's saving someone else's judgement time.</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Knowledge Management · Compliance Design</div>
+    <h3>A nine-layer knowledge architecture for a regulated payments environment</h3>
+    <p class="work-summary">The most expensive hidden cost in an early company is a document system that grows crooked and can't be fixed later. I designed the architecture around audit logic — so anyone can find the right version of the right document, at any time.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Knowledge Management · Compliance Design</div>
+      <h3>A nine-layer knowledge architecture for a regulated payments environment</h3>
+      <h4>Background</h4>
+      <p>Almost every early company hits the same wall: the drive starts empty, people drop files wherever seems logical, and months later nobody can find "the latest version." In a regulated payments environment, failing to locate a document during an audit isn't an efficiency problem — it's a compliance risk.</p>
+      <h4>Three design decisions</h4>
+      <ul>
+        <li>Compliance first, not convenience first — legal and compliance isolated as top layers; when an auditor arrives, you point directly at the right folder</li>
+        <li>ISO 8601 naming + version control — every file named date_category_description_version; sort by date, find the latest; superseded versions move to Archive</li>
+        <li>Access by sensitivity — PII and banking data viewer-only by default; external sharing requires approval; the chain of responsibility is always unambiguous</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Every new document had a clear home, and a Company Standards document became the single entry point for all new hires — onboarding no longer depended on oral tradition. I designed for the audited, 20-person future state and worked backwards — not for the comfort of the present three.</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">People Ops · Compliance · 0→1</div>
+    <h3>Recruitment, payroll and onboarding — built from zero</h3>
+    <p class="work-summary">When the company started hiring, there were no JD templates, no interview process, no offer format, no payroll method, no onboarding. I designed the full pipeline independently, UK-employment-law compliant throughout.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">People Ops · Compliance · 0→1</div>
+      <h3>Recruitment, payroll and onboarding — built from zero</h3>
+      <h4>Background</h4>
+      <p>The company entered its growth phase with zero HR infrastructure. Everything had to be designed from scratch, in compliance with UK employment law — and because of the client community's cultural makeup, hiring also had to account for language and cross-cultural factors.</p>
+      <h4>What was built</h4>
+      <ul>
+        <li>Hiring pipeline: multilingual JDs, structured interview frameworks, screening criteria, offer and contract templates</li>
+        <li>Payroll: tracking system, UK tax and NI calculation, bank transfer process, payslip standard</li>
+        <li>Onboarding: first-week SOP, system guides, a who-to-contact map, a 30-day task checklist</li>
+        <li>Compliance: multi-jurisdiction NDA review, external law-firm coordination, GDPR-aware data handling</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Any new manager can take the system over and keep it running. Well-designed process buys more than efficiency — it buys predictability, so the founder's attention goes only where real judgement is required.</p>
+    </div>
+  </div>
+</section>
+
+<section id="people-en" class="track-b">
+  <div class="sec-head"><span class="sec-eye b">Track 02</span><h2 class="sec-title">People &amp; Development</h2></div>
+  <p class="sec-desc">The other long-running line: teaching, training and career services. One method throughout — turn tacit experience into explicit frameworks, so learners can actually catch what's being handed to them. Click any card for the full case.</p>
+
+  <div class="work flagship" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Founder · B2G Career Service · Ongoing</div>
+    <h3>B2G: a career service for early-career talent — find the passion in your own story, then run alongside you to the offer</h3>
+    <p class="work-summary">The hardest part of job hunting isn't the CV — it's "what do I actually want to do?" B2G starts from personal narrative to locate genuine passion, then pairs it with English workshops and a structured accompaniment programme.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Founder · B2G Career Service · Ongoing</div>
+      <h3>B2G: a career service for early-career talent</h3>
+      <h4>Why this exists</h4>
+      <p>Most career services start with "how to write a CV" — but that's the second-to-last step. What actually blocks early-career talent is a deeper question: what do I want to do? B2G is designed from that question outwards.</p>
+      <h4>Three service pillars</h4>
+      <ul>
+        <li>Narrative consultation — one-to-one sessions that work backwards from lived experience to motivation patterns, locating genuine passion; not an off-the-shelf career test, but a close reading of your own story</li>
+        <li>English workshops — practical English for real job-search scenarios: interviews, correspondence, self-introduction</li>
+        <li>Accompaniment programme — paced milestones and check-ins across the whole search cycle; direction only matters once it becomes action</li>
+      </ul>
+      <h4>What's next</h4>
+      <p>B2G is gradually adding members and partners, on its way to becoming a full service team. If you're early-career and searching for direction — or a potential partner — get in touch.</p>
+      <div class="dlg-contact">
+        Email: <a href="mailto:b2g.career.2026@gmail.com">b2g.career.2026@gmail.com</a><br>
+        Threads: <a href="https://www.threads.com/@b2g.2026">@b2g.2026</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Training Lead · Professional Training Institute (Taiwan)</div>
+    <h3>New-member development × end-to-end key-client pitch training</h3>
+    <p class="work-summary">As a trainer for a Taiwan-based professional training institute, I run capability development for new members and complete key-client pitch training — from analysis to final rehearsal.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Training Lead · Professional Training Institute (Taiwan)</div>
+      <h3>New-member development × end-to-end key-client pitch training</h3>
+      <h4>Two training tracks</h4>
+      <ul>
+        <li>New-member development — progress mapped to a capability matrix, with explicit pass criteria per stage; every trainee knows where they are and what to practise next</li>
+        <li>Key-client pitch training — the full chain from market and client analysis, through argument structure, to pitch rehearsal; not presentation polish, but the whole path from information to persuasion</li>
+      </ul>
+      <h4>Method</h4>
+      <p>It translates my frontline commercial method into curriculum that can be taught, practised and assessed. The measure of good training isn't a brilliant lecture — it's whether trainees can genuinely perform on their own afterwards.</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Contractor · UK Recruitment Consultancy (Semiconductors)</div>
+    <h3>Semiconductor talent search for a founder-led recruitment consultancy</h3>
+    <p class="work-summary">I work as a contractor with a UK recruitment consultancy founded by a veteran headhunter, supporting talent search in the semiconductor space — candidate research, outreach and first-line communication.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Contractor · UK Recruitment Consultancy (Semiconductors)</div>
+      <h3>Semiconductor talent search for a founder-led recruitment consultancy</h3>
+      <h4>The engagement</h4>
+      <ul>
+        <li>Market mapping and candidate research for specialised semiconductor roles</li>
+        <li>Candidate outreach and first-line communication, feeding into the consultant's deep interviews</li>
+        <li>Working directly with the founder, at the delivery standard of a boutique consultancy</li>
+      </ul>
+      <h4>Why this line matters</h4>
+      <p>Talent search shows me both sides of the market at once — how companies define "the right person," and how candidates get seen. Those observations feed directly into B2G: everything I teach early-career talent is verified first-hand from the other side of the market.</p>
+    </div>
+  </div>
+
+  <div class="work" tabindex="0" role="button" aria-haspopup="dialog">
+    <div class="work-role">Teaching · Long-term · HK &amp; TW Students · UK / Taiwan</div>
+    <h3>English writing &amp; exam-prep teaching — plus teaching Mandarin to non-native speakers</h3>
+    <p class="work-summary">Long-term English writing and exam-prep teaching, with students across Hong Kong and Taiwan and teaching experience in both the UK and Taiwan; I've also taught Mandarin to non-native speakers.</p>
+    <span class="work-open">Open full case →</span>
+    <div class="work-detail">
+      <div class="work-role">Teaching · Long-term · HK &amp; TW Students · UK / Taiwan</div>
+      <h3>English writing &amp; exam-prep teaching — plus teaching Mandarin to non-native speakers</h3>
+      <h4>Scope</h4>
+      <ul>
+        <li>English writing and exam preparation, taught from logical structure rather than memorised templates; students across Hong Kong and Taiwan</li>
+        <li>In-person and online teaching experience in both the UK and Taiwan</li>
+        <li>Teaching Mandarin to non-native speakers — two-way language teaching gives first-hand insight into where learners actually get stuck</li>
+        <li>Mentoring on a career platform: the non-technical route into fintech</li>
+      </ul>
+      <h4>What teaching gave me</h4>
+      <p>Years of teaching built my most fundamental skill: decomposing complex things into forms anyone can digest. That thread runs through everything I do — writing SOPs, running handovers, designing training. At heart, they're all teaching.</p>
+    </div>
+  </div>
+</section>
+
+<section id="writing-en">
+  <div class="sec-head"><span class="sec-eye n">Writing</span><h2 class="sec-title">Long-form writing</h2></div>
+  <p class="sec-desc">Every so often I write a long essay. It isn't content marketing — it's how I think. Writing turns vague intuition into clear judgement.</p>
+  <div class="writing-list">
+    <a class="writing-row" href="article-docs.html">
+      <span class="writing-cat">Operations Thinking</span>
+      <span class="writing-title">The most common document management mistake early startups make — and why it explodes when you're busiest</span>
+      <span class="writing-arrow">→</span>
+    </a>
+    <a class="writing-row" href="article-fraud.html">
+      <span class="writing-cat">Business Observation</span>
+      <span class="writing-title">How I handled a cross-border fraud case in the UK — without a lawyer</span>
+      <span class="writing-arrow">→</span>
+    </a>
+    <a class="writing-row" href="article-org.html">
+      <span class="writing-cat">Workplace Structure</span>
+      <span class="writing-title">Feeling suffocated at a big company isn't a personality problem</span>
+      <span class="writing-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<section id="about-en">
+  <div class="sec-head"><span class="sec-eye n">About</span><h2 class="sec-title">About me</h2></div>
+  <div class="about-grid">
+    <div>
+      <p>My path isn't a straight line: a literature degree, years of English teaching, brand and B2B marketing in Taiwan, an MSc in Manchester, then a London fintech payments startup where I built the company's operating systems from zero.</p>
+      <p>Everything shares one pattern: I'm always the person who <strong>turns chaos into something others can catch</strong>. Inside a company, that means processes, documents and systems. In teaching and training, it means frameworks, curriculum and accompaniment. Same craft — different recipient.</p>
+      <p>I'm completely at home in an all-English working environment and prefer the rhythm of startups and international teams — fast, transparent, results-first. Right now I'm running the B2G career service while continuing to move forward in business development and project management.</p>
+    </div>
+    <div>
+      <div class="fact"><span class="fact-k">Base</span><span>London (UK) · connected both ways with Taipei</span></div>
+      <div class="fact"><span class="fact-k">Education</span><span>MSc Marketing (Merit), University of Manchester · BA Foreign Languages &amp; Literatures, National Taiwan University</span></div>
+      <div class="fact"><span class="fact-k">Languages</span><span>Mandarin (native) · English (full working) · Japanese · Portuguese (learning)</span></div>
+      <div class="fact"><span class="fact-k">Domains</span><span>Fintech / Payments · Career Development · Education &amp; Training · Talent Markets</span></div>
+      <div class="fact"><span class="fact-k">Tools</span><span>AI workflow design · Notion / Google Workspace · Meta &amp; Google Ads</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact-en" class="contact">
+  <div class="contact-card">
+    <h2>Want to talk? Email me,<br>or find me on LinkedIn.</h2>
+    <div class="contact-right">
+      <div class="contact-line"><span class="contact-k">Email</span><a href="mailto:liushihyu1@gmail.com">liushihyu1@gmail.com</a></div>
+      <div class="contact-line"><span class="contact-k">LinkedIn</span><a href="https://linkedin.com/in/shihyu-liu/">linkedin.com/in/shihyu-liu</a></div>
+      <div class="contact-line"><span class="contact-k">B2G</span><a href="mailto:b2g.career.2026@gmail.com">b2g.career.2026@gmail.com</a>&nbsp;·&nbsp;<a href="https://www.threads.com/@b2g.2026">Threads @b2g.2026</a></div>
+      <div class="contact-btns">
+        <a class="btn primary" href="mailto:liushihyu1@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://linkedin.com/in/shihyu-liu/">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /lang-en -->
+
+<footer>
+  <span class="lang-zh">© 2026 Ivy Liu（劉詩妤）</span>
+  <span class="lang-en">© 2026 Ivy Liu (Shih Yu Liu)</span>
+  <span>London / Taipei</span>
+</footer>
+
+<dialog id="caseDialog">
+  <div class="dlg-inner" id="dlgInner">
+    <button class="dlg-close" id="dlgClose" aria-label="Close">✕ Close</button>
+    <div id="dlgContent"></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var tabs = document.querySelectorAll('.lang-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var lang = tab.getAttribute('data-setlang');
+      root.setAttribute('data-lang', lang);
+      root.setAttribute('lang', lang === 'zh' ? 'zh-TW' : 'en');
+      tabs.forEach(function(t){ t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      window.scrollTo({top:0});
+    });
+  });
+
+  var dlg = document.getElementById('caseDialog');
+  var content = document.getElementById('dlgContent');
+  var inner = document.getElementById('dlgInner');
+  document.querySelectorAll('.work').forEach(function(card){
+    function open(){
+      var detail = card.querySelector('.work-detail');
+      if(!detail) return;
+      content.innerHTML = detail.innerHTML;
+      inner.className = 'dlg-inner ' + (card.closest('.track-a') ? 'dlg-a' : 'dlg-b');
+      dlg.showModal();
+      inner.scrollTop = 0;
+    }
+    card.addEventListener('click', function(e){
+      if(e.target.closest('a')) return; /* let inner links work */
+      open();
+    });
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); }
+    });
+  });
+  document.getElementById('dlgClose').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){
+    var r = dlg.querySelector('.dlg-inner').getBoundingClientRect();
+    if(e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom){ dlg.close(); }
+  });
+})();
+</script>
+
+</body>
+</html>

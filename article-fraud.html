@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Handled a Cross-Border Fraud Case Without a Lawyer — Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Schibsted+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBFAF7;--ink:#191712;--muted:#6F6A60;--line:#E7E3D8;--accent:#2547C0;--tint:#EEF1FB;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Schibsted Grotesk',sans-serif;font-size:15px;line-height:1.75;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(251,250,247,0.92);backdrop-filter:blur(10px);}
+.nav-brand{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:150px 48px 56px;border-bottom:1px solid var(--line);max-width:900px;margin:0 auto;}
+.eye{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,52px);font-weight:600;line-height:1.12;margin-bottom:26px;letter-spacing:-0.01em;}
+.byline{display:flex;gap:32px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+.body{padding:64px 48px;max-width:780px;margin:0 auto;}
+.body p{font-size:15.5px;line-height:1.95;color:rgba(25,23,18,0.78);margin-bottom:26px;}
+.body h2{font-family:'Fraunces',serif;font-size:27px;font-weight:600;line-height:1.2;margin:54px 0 18px;color:var(--ink);border-left:3px solid var(--accent);padding-left:16px;letter-spacing:-0.01em;}
+.body h3{font-family:'Fraunces',serif;font-size:19px;font-style:italic;margin:34px 0 14px;color:var(--ink);}
+.body blockquote{margin:34px 0;padding:20px 28px;border-left:2px solid var(--accent);background:var(--tint);border-radius:0 10px 10px 0;}
+.body blockquote p{font-size:14.5px;color:var(--ink);margin-bottom:0;}
+.body strong{color:var(--ink);font-weight:700;}
+.body em{font-style:italic;color:var(--accent);}
+.body hr{border:none;border-top:1px solid var(--line);margin:46px 0;}
+.foot{padding:48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;}
+.foot a{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.foot a:hover{color:var(--ink);}
+.foot-tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+@media(max-width:900px){nav{padding:14px 20px;}.hero{padding:120px 20px 44px;}.body{padding:48px 20px;}.foot{padding:32px 20px;flex-direction:column;gap:16px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Ivy Liu</a>
+  <a class="nav-back" href="index.html#writing">← Writing</a>
+</nav>
+<div class="hero">
+  <div class="eye">Business Observation</div>
+  <h1>How I Handled a Cross-Border Fraud Case in the UK — Without a Lawyer</h1>
+  <div class="byline"><span>March 2026</span><span>Ivy Liu</span></div>
+</div>
+<div class="body">
+  <h3>When fraud happens, you don't need a lawyer — you need to understand your own case better than anyone.</h3>
+  <hr>
+  <p>When fraud happens, most people's first instinct is to call a lawyer. But what if you're a three-person company, based in the UK, and it's never happened before?</p>
+  <p>We lost over £12,000. I didn't hire a lawyer. I independently organised the evidence, drafted all documents, contacted every relevant institution, and ultimately appeared in court alongside the CEO.</p>
+  <p>This article isn't a victory story — the cases are still ongoing as of writing. But I want to document the decision-making framework I built in the process, because nobody teaches you this. You have to figure it out in the most chaotic moments.</p>
+  <hr>
+  <h2>I. He looked completely legitimate</h2>
+  <p>The fraudster was impersonating a property management company claiming to do real estate legal services. We ran due diligence — checked Companies House, their website, looked up their clients. Everything checked out. We'd been in contact for months, and they never once asked us for money unprompted.</p>
+  <p>That's what makes this type of fraud so hard to prevent: <strong>they don't ask for your money upfront. They earn your trust first.</strong></p>
+  <p>Their payment method was a physical card terminal — contactless Visa transactions. This made them look like a legitimate merchant with a physical presence. We later learned this was the entire mechanism: using our payment infrastructure as a pass-through layer to extract funds.</p>
+  <hr>
+  <h2>II. How the problem surfaced</h2>
+  <p>One day, we flagged that the same card was used twice within a short window for large transactions. It was noticed — but not escalated fast enough. The funds were processed and paid out.</p>
+  <p>Then the legitimate cardholder appeared. They had no knowledge of these transactions and wanted a chargeback. Because NeroPay operated under a larger regulated payment processor, we were required to cover the chargeback or risk losing our processing rights.</p>
+  <p>We paid. Then we went after the merchant.</p>
+  <hr>
+  <h2>III. How he turned on us</h2>
+  <p>When we reached out for an explanation, his tone changed immediately. He claimed we had misused his stored card details — but our Terms and Conditions clearly stated that in cases of dispute, we retained the right to recover funds via card-on-file. He hadn't read them. He tried to use that against us anyway.</p>
+  <p>He said if there was a dispute, we could "contact his clients directly" — then provided no client contact details whatsoever. Classic misdirection: create confusion, exhaust the other side, then disappear.</p>
+  <hr>
+  <h2>IV. Building the evidence: what works, what doesn't</h2>
+  <p>Once we decided to pursue formal action, I started organising everything we had.</p>
+  <p>What we had: all WhatsApp conversation screenshots, email correspondence, phone call logs (our customer service system auto-records calls with prior notification), his company registration documents, the identity documents he'd submitted for KYC, transaction records, and the specific T&C clauses that governed the situation.</p>
+  <p>The hardest part was WhatsApp — we were worried he might delete messages on his end, leaving our screenshots without corroboration. Our solution was to timestamp every screenshot and store them redundantly across multiple locations to establish a clear chain of custody.</p>
+  <blockquote><p>Evidence doesn't just need to exist — it needs to be credible. Every screenshot needs context so that a complete stranger can understand what happened within five minutes of reading it.</p></blockquote>
+  <p>My organisation format was: a timeline (every transaction and communication, chronologically), a document index (every exhibit numbered with a description), and a financial summary (loss amount, covered chargeback, claimed amount).</p>
+  <hr>
+  <h2>V. The sequence for contacting institutions</h2>
+  <p><strong>Action Fraud</strong> — The UK's national fraud reporting centre. This is step one. You receive a Crime Reference Number, which you'll need for every subsequent interaction. But know what you're getting: Action Fraud is primarily a data collection system, not an enforcement body. They won't actively investigate your case.</p>
+  <p><strong>Police</strong> — Report formally using the Crime Reference Number. Because the amount crossed a certain threshold, the police agreed to take the report, though initially suggested mediation first.</p>
+  <p><strong>Mediation</strong> — Courts typically require a mediation attempt before formal proceedings. Our CEO attended. The other party showed no genuine willingness to resolve. Mediation failed.</p>
+  <p><strong>County Court</strong> — Filed through HMCTS MoneyClaim Online. Once submitted and accepted, formal proceedings began.</p>
+  <hr>
+  <h2>VI. What we discovered preparing for court</h2>
+  <p>As we assembled court documents, the full picture emerged. The person we'd been dealing with had <strong>27 known aliases</strong>. He'd defrauded people across multiple industries — sometimes as a property company, sometimes as a used car dealer, taking payment and never delivering. He was, according to media reports, the first person in England to be legally prohibited by a court from using a false name in English-language commercial transactions.</p>
+  <p>We weren't the first victims. We wouldn't be the last — unless someone kept prosecuting.</p>
+  <hr>
+  <h2>VII. The decision framework I built from this</h2>
+  <p><strong>Due diligence doesn't equal safety.</strong> We checked everything we could. The fraudster had prepared better than us. Commercial registration can be fabricated, identity documents can be faked, long-term contact can be part of the setup. Real risk management triggers when the first financial anomaly appears — not after the fact.</p>
+  <p><strong>Your contract terms are your only protection.</strong> The one solid ground we stood on throughout was the T&C clause permitting automatic fund recovery. Without it, our legal position would have been significantly weaker. Terms aren't decorative — they're what you fall back on when everything else fails.</p>
+  <p><strong>Get the Crime Reference Number immediately.</strong> It doesn't help you recover money. But it makes your case an official record. In every subsequent interaction — with banks, partners, courts — having that number transforms how seriously you're taken.</p>
+  <p><strong>Document for strangers, not for yourself.</strong> Judges, mediators, opposing solicitors — none of them know your business. Your documents need to make the situation legible to someone with zero background, with no ambiguity about what happened, who did what, and how much was lost.</p>
+  <hr>
+  <p>How this ends, I still don't know. But what I know is: without systematically organising the evidence and following every procedure, we wouldn't even have had a shot at court.</p>
+  <p>Sometimes you don't need a lawyer. You need to understand your own case better than anyone in the room.</p>
+  <hr>
+  <p><em>Update: Case outcome will be added here once decided.</em></p>
+</div>
+<div class="foot">
+  <a href="index.html#writing">← Back to Writing</a>
+  <div class="foot-tag">Business Observation</div>
+</div>
+</body>
+</html>
